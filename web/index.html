@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SynapseFlow AI — Biomorphic Adaptive UI/UX & Cognitive Load Engine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="topology-exploratory">
+    <!-- Top HUD Navigation -->
+    <header class="hud-header">
+        <div class="hud-brand">
+            <img src="assets/logo.jpg" alt="SynapseFlow Logo" class="brand-logo" onerror="this.style.display='none'">
+            <div class="brand-text">
+                <h1>SYNAPSE<span>FLOW</span> <span class="badge-tag">AI CORE v2.4</span></h1>
+                <p class="brand-sub">Biomorphic Kinetic UI/UX & Dynamic Cognitive Load Topology Engine</p>
+            </div>
+        </div>
+
+        <div class="hud-telemetry">
+            <div class="telemetry-pill">
+                <span class="telemetry-label">OPERATOR STATE</span>
+                <span class="telemetry-val" id="hudOperatorState">FLOW STATE</span>
+            </div>
+            <div class="telemetry-pill">
+                <span class="telemetry-label">COGNITIVE INDEX</span>
+                <span class="telemetry-val" id="hudCognitiveLoad">0.28</span>
+            </div>
+            <div class="telemetry-pill">
+                <span class="telemetry-label">TOPOLOGY MODE</span>
+                <span class="telemetry-val highlight" id="hudTopology">SPATIAL_EXPLORATORY</span>
+            </div>
+            <div class="telemetry-pill">
+                <span class="telemetry-label">FITTS' ID</span>
+                <span class="telemetry-val" id="hudFittsId">2.41 bits</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Grid -->
+    <main class="workspace-grid">
+        <!-- Sidebar: Operator Persona & Mathematical Parameters -->
+        <aside class="panel control-panel">
+            <div class="panel-header">
+                <div class="header-icon">⚙</div>
+                <h2>COGNITIVE SIMULATOR</h2>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">MISSION CRITICAL PERSONA</label>
+                <div class="persona-grid">
+                    <button class="persona-btn active" data-persona="exploratory">
+                        <span class="persona-icon">🌌</span>
+                        <div class="persona-info">
+                            <span class="persona-name">Creative Explorer</span>
+                            <span class="persona-desc">Low Stress • Deep Focus</span>
+                        </div>
+                    </button>
+                    <button class="persona-btn" data-persona="trading">
+                        <span class="persona-icon">📈</span>
+                        <div class="persona-info">
+                            <span class="persona-name">Crisis Desk / Quant</span>
+                            <span class="persona-desc">High Density • Moderate Urgency</span>
+                        </div>
+                    </button>
+                    <button class="persona-btn" data-persona="atc">
+                        <span class="persona-icon">📡</span>
+                        <div class="persona-info">
+                            <span class="persona-name">Air Traffic Controller</span>
+                            <span class="persona-desc">Multi-Radar • Strict Spatial Grouping</span>
+                        </div>
+                    </button>
+                    <button class="persona-btn" data-persona="trauma">
+                        <span class="persona-icon">🚨</span>
+                        <div class="persona-info">
+                            <span class="persona-name">ICU Trauma Surgeon</span>
+                            <span class="persona-desc">Severe Time Urgency • Tunnel Focus</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="control-group sliders-group">
+                <label class="control-label">BIOMORPHIC LOAD PARAMETERS</label>
+                
+                <div class="slider-item">
+                    <div class="slider-meta">
+                        <span>Intrinsic Task Complexity ($L_i$)</span>
+                        <span id="valIntrinsic">0.30</span>
+                    </div>
+                    <input type="range" id="sliderIntrinsic" min="0.0" max="1.0" step="0.01" value="0.30">
+                </div>
+
+                <div class="slider-item">
+                    <div class="slider-meta">
+                        <span>Extraneous UI Clutter ($L_e$)</span>
+                        <span id="valExtraneous">0.25</span>
+                    </div>
+                    <input type="range" id="sliderExtraneous" min="0.0" max="1.0" step="0.01" value="0.25">
+                </div>
+
+                <div class="slider-item">
+                    <div class="slider-meta">
+                        <span>Working Memory Chunks (Miller: $7 \pm 2$)</span>
+                        <span id="valMemoryChunks">4 chunks</span>
+                    </div>
+                    <input type="range" id="sliderMemoryChunks" min="1" max="14" step="1" value="4">
+                </div>
+
+                <div class="slider-item">
+                    <div class="slider-meta">
+                        <span>Operator Stress / Heart Rate Stress ($S$)</span>
+                        <span id="valStress">0.20</span>
+                    </div>
+                    <input type="range" id="sliderStress" min="0.0" max="1.0" step="0.01" value="0.20">
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <button class="action-btn primary" id="btnRecalculate">
+                    <span>⚡ SYNTHESIZE TOPOLOGY</span>
+                </button>
+                <button class="action-btn secondary" id="btnAutoSimulate">
+                    <span>▶ REAL-TIME STREAM</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Center: Interactive Biomorphic Canvas & Kinetic Fitts Target Sandbox -->
+        <section class="center-stage">
+            <!-- Morphing UI Canvas Demonstration -->
+            <div class="panel adaptive-viewport" id="adaptiveViewport">
+                <div class="panel-header">
+                    <div class="header-icon">👁</div>
+                    <h2>LIVE BIOMORPHIC TOPOLOGY CANVAS</h2>
+                    <div class="topology-indicator" id="topologyBadge">SPATIAL_EXPLORATORY_CANVAS</div>
+                </div>
+
+                <!-- Dynamically morphed components container -->
+                <div class="morphed-interface" id="morphedInterface">
+                    <!-- Critical Vital Node (Only high priority in tunnel mode) -->
+                    <div class="ui-card primary-card" id="cardPrimaryVital">
+                        <div class="card-badge">PRIORITY ALPHA</div>
+                        <h3>OPERATOR HEMODYNAMICS & SYSTEM LOAD</h3>
+                        <div class="metric-row">
+                            <div class="metric-stat">
+                                <span class="stat-lbl">NEURAL FLUX</span>
+                                <span class="stat-num" id="statNeuralFlux">1,248 ops/s</span>
+                            </div>
+                            <div class="metric-stat">
+                                <span class="stat-lbl">REACTION TIME</span>
+                                <span class="stat-num" id="statReactionTime">240 ms</span>
+                            </div>
+                            <div class="metric-stat">
+                                <span class="stat-lbl">FITTS EFFICIENCY</span>
+                                <span class="stat-num" id="statFittsEfficiency">98.4%</span>
+                            </div>
+                        </div>
+                        <div class="live-pulse-bar">
+                            <div class="pulse-fill" id="pulseFill" style="width: 28%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Widget Grid (Morphed or pruned in high stress) -->
+                    <div class="ui-card secondary-card" id="cardSecondary1">
+                        <div class="card-badge">TELEMETRY STREAM</div>
+                        <h4>Sweller Tripartite Load Distribution</h4>
+                        <div class="sweller-breakdown">
+                            <div class="sweller-bar">
+                                <div class="sw-segment sw-intrinsic" id="swIntrinsic" style="width: 30%;" title="Intrinsic Load"></div>
+                                <div class="sw-segment sw-extraneous" id="swExtraneous" style="width: 25%;" title="Extraneous Load"></div>
+                                <div class="sw-segment sw-germane" id="swGermane" style="width: 45%;" title="Germane Capacity"></div>
+                            </div>
+                            <div class="sweller-legend">
+                                <span><i class="dot dot-i"></i> Intrinsic ($L_i$)</span>
+                                <span><i class="dot dot-e"></i> Extraneous ($L_e$)</span>
+                                <span><i class="dot dot-g"></i> Germane ($L_g$)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-card secondary-card" id="cardSecondary2">
+                        <div class="card-badge">HICK-HYMAN LOGIC</div>
+                        <h4>Decision Complexity Matrix</h4>
+                        <p class="card-desc">Choices available: <b id="lblChoices">8 items</b> • Calculated Latency: <b id="lblDecisionLatency">380 ms</b></p>
+                        <div class="choice-pills" id="choicePills">
+                            <button class="cp-pill">Vector Alpha</button>
+                            <button class="cp-pill">Vector Beta</button>
+                            <button class="cp-pill">Vector Gamma</button>
+                            <button class="cp-pill">Vector Delta</button>
+                        </div>
+                    </div>
+
+                    <div class="ui-card tertiary-card" id="cardTertiary1">
+                        <div class="card-badge">BACKGROUND SENSORS</div>
+                        <h4>Ambient Spatial Acoustic Flux</h4>
+                        <p class="card-desc">Noise floor: 32 dB • Signal-to-Cognitive Ratio: 94.2%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fitts' Law Kinetic Target Acquisition Simulator -->
+            <div class="panel fitts-sandbox">
+                <div class="panel-header">
+                    <div class="header-icon">🎯</div>
+                    <h2>FITTS' LAW & HICK-HYMAN KINETIC BENCHMARK SANDBOX</h2>
+                    <div class="sandbox-instructions">Click the pulsing target to record human-motor kinetics ($D$, $W$, $MT$, $ID$)</div>
+                </div>
+
+                <div class="fitts-canvas-container" id="fittsContainer">
+                    <canvas id="fittsCanvas"></canvas>
+                    <div class="fitts-target" id="fittsTarget" style="left: 50%; top: 50%; width: 48px; height: 48px;">
+                        <span class="target-crosshair"></span>
+                    </div>
+                    <div class="fitts-overlay-info" id="fittsOverlay">
+                        Click target to begin kinetic acquisition benchmark
+                    </div>
+                </div>
+
+                <div class="fitts-metrics-bar">
+                    <div class="f-stat">
+                        <span>DISTANCE ($D$):</span>
+                        <strong id="fStatD">320 px</strong>
+                    </div>
+                    <div class="f-stat">
+                        <span>TARGET WIDTH ($W$):</span>
+                        <strong id="fStatW">48 px</strong>
+                    </div>
+                    <div class="f-stat">
+                        <span>INDEX OF DIFFICULTY ($ID$):</span>
+                        <strong id="fStatID">3.74 bits</strong>
+                    </div>
+                    <div class="f-stat">
+                        <span>MOVEMENT TIME ($MT$):</span>
+                        <strong id="fStatMT">312 ms</strong>
+                    </div>
+                    <div class="f-stat">
+                        <span>THROUGHPUT ($IP$):</span>
+                        <strong id="fStatIP">11.98 bits/s</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right: Real-time Mathematical Cognitive Graph & Telemetry -->
+        <aside class="panel telemetry-panel">
+            <div class="panel-header">
+                <div class="header-icon">🧠</div>
+                <h2>COGNITIVE GRAPH & MATHEMATICAL PROOFS</h2>
+            </div>
+
+            <!-- Dynamic Force-Directed Friction Canvas -->
+            <div class="node-canvas-wrap">
+                <canvas id="frictionGraphCanvas"></canvas>
+                <div class="graph-legend">
+                    <span><i class="dot dot-node-pri"></i> Primary Focus</span>
+                    <span><i class="dot dot-node-sec"></i> Contextual Data</span>
+                    <span><i class="dot dot-node-ext"></i> Friction Clutter</span>
+                </div>
+            </div>
+
+            <!-- Mathematical Proofs & Model Formulations -->
+            <div class="math-proofs-container">
+                <h3>FORMAL MATHEMATICAL MODELS</h3>
+                
+                <div class="math-card">
+                    <div class="math-title">1. Sweller Tri-partite Load Model</div>
+                    <div class="math-formula">
+                        $$L_{\text{total}} = w_i L_i + w_e L_e - \kappa L_g$$
+                    </div>
+                    <p class="math-desc">When $L_{\text{total}} > 0.75$, working memory capacity ($7 \pm 2$) saturates, triggering biomorphic topology contraction to tunnel mode.</p>
+                </div>
+
+                <div class="math-card">
+                    <div class="math-title">2. Fitts' Law Motor Kinetics</div>
+                    <div class="math-formula">
+                        $$ID = \log_2\left(\frac{2D}{W}\right), \quad MT = a + b \cdot ID$$
+                    </div>
+                    <p class="math-desc">The engine dynamically scales interactive hitboxes ($W$) proportional to calculated operator stress to maintain bounded $MT \le 250\text{ms}$.</p>
+                </div>
+
+                <div class="math-card">
+                    <div class="math-title">3. Hick-Hyman Decision Latency</div>
+                    <div class="math-formula">
+                        $$T_{\text{decision}} = b \sum_{i=1}^n p_i \log_2\left(\frac{1}{p_i} + 1\right)$$
+                    </div>
+                    <p class="math-desc">Under elevated cognitive load, extraneous decision nodes ($n$) are pruned to minimize exponential reaction delay.</p>
+                </div>
+            </div>
+
+            <!-- CLI & Telemetry Export -->
+            <div class="export-box">
+                <div class="export-header">
+                    <span>TACTICAL CLI COMMAND</span>
+                    <button class="copy-btn" id="btnCopyCLI">COPY</button>
+                </div>
+                <code id="cliSnippet">python3 synapseflow/cli/main.py morph --intrinsic 0.30 --extraneous 0.25 --chunks 4 --stress 0.20</code>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="hud-footer">
+        <div class="footer-left">
+            <span>SYNAPSEFLOW AI CORE</span> • <span>Hyperbloom October — UI/UX & Web Design Specialization</span>
+        </div>
+        <div class="footer-right">
+            <span>Built with Deterministic Mathematical Ergonomics & Biomorphic CSS Synthesis</span>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
